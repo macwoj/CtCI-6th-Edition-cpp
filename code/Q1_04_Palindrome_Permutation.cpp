@@ -35,6 +35,29 @@ bool isPalindromePermutation1(string str) {
     return chars.count() <= 1;
 }
 
+bool isPalindromePermutation2(string str) {
+    bitset<64> chars;
+    for (auto c:str) {
+        c = tolower(c);
+        if (c>='a' && c<='z') {
+            chars.flip(c-'a');
+        }
+    }
+    auto num = chars.to_ullong();
+    return (num & (num -1)) == 0;
+}
+
+bool isPalindromePermutation3(string str) {
+    unsigned long long chars = 0;
+    for (auto c:str) {
+        c = tolower(c);
+        if (c>='a' && c<='z') {
+            chars ^= 1 << c;
+        }
+    }
+    return (chars & (chars -1)) == 0;
+}
+
 int main() {
     vector<string> input = {
         "Rats live on no evil star",
@@ -48,6 +71,8 @@ int main() {
     for (auto test:input) {
         cout << test << " " << isPalindromePermutation(test) << endl;
         cout << test << " " << isPalindromePermutation1(test) << endl;
+        cout << test << " " << isPalindromePermutation2(test) << endl;
+        cout << test << " " << isPalindromePermutation3(test) << endl;
     }
     
 }
