@@ -4,6 +4,11 @@
 - [Chapter 2 Linked Lists](#chapter-2-linked-lists)
 - [Chapter 3 Stacks and Queues](#chapter-3-stacks-and-queues)
 - [Chapter 4 Trees and Graphs](#chapter-4-trees-and-graphs)
+- [Chapter 5 Bit Manipulation](#chapter-5-bit-manipulation)
+- [Chapter 8 Recursion and Dynamic Programming](#chapter-8-recursion-and-dynamic-programming)
+- [Chapter 10 Sorting and Searching](#chapter-10-sorting-and-searching)
+- [Chapter 16 Moderate](#chapter-16-moderate)
+- [Chapter 17 Hard](#chapter-17-hard)
 
 # CtCI-6th-Edition-cpp
 * https://github.com/careercup/CtCI-6th-Edition
@@ -36,3 +41,24 @@
   * https://www.geeksforgeeks.org/building-heap-from-array/
 * [Q4_01_Route_Between_Nodes](code/Q4_01_Route_Between_Nodes.cpp)
 * [Q4_02_Minimal_Tree](code/Q4_02_Minimal_Tree.cpp)
+
+# Chapter 5 Bit Manipulation
+* (Q5_00_BitTasks)[code/Q5_00_BitTasks.cpp]
+* (Q5_01_Insertion)[code/Q5_01_Insertion.cpp]
+
+# Chapter 8 Recursion and Dynamic Programming
+* (Q8_01_Triple_Step)[code/Q8_01_Triple_Step.cpp]
+
+# Chapter 10 Sorting and Searching
+* (Q10_00_Sort.cpp)[code/Q10_00_Sort.cpp]
+* (Q10_00_BinSearch.cpp)[code/Q10_00_BinSearch.cpp]
+* (Q10_01_Sorted_Merge.cpp)[code/Q10_01_Sorted_Merge.cpp]
+* (Q10_02_Group_Anagrams.cpp)[code/Q10_02_Group_Anagrams.cpp]
+
+# Chapter 16 Moderate
+* (Q16_01_Number_Swapper.cpp)[code/Q16_01_Number_Swapper.cpp]
+
+# Chapter 17 Hard
+* (Q17_01_Add_Without_Plus.cpp)[code/Q17_01_Add_Without_Plus.cpp]
+* (Q17_02_Shuffle.cpp)[code/Q17_02_Shuffle.cpp]
+* (Q17_03_Random_Set.cpp)[code/Q17_03_Random_Set.cpp]
