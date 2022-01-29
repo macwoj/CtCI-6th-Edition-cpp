@@ -23,6 +23,8 @@
 * [Q1_03_URLify.cpp](code/Q1_03_URLify.cpp)
 * [Q1_04_Palindrome_Permutation](code/Q1_04_Palindrome_Permutation.cpp)
     * https://www.cplusplus.com/reference/cctype/tolower/
+* [Q1_05_One_Away.cpp](code/Q1_05_One_Away.cpp)
+* [Q1_06_String_Compression.cpp](code/Q1_06_String_Compression.cpp)
 
 # Chapter 2 Linked Lists
 * [Q2_01_Remove_Dups](code/Q2_01_Remove_Dups.cpp)
@@ -62,3 +64,5 @@
 * (Q17_01_Add_Without_Plus.cpp)[code/Q17_01_Add_Without_Plus.cpp]
 * (Q17_02_Shuffle.cpp)[code/Q17_02_Shuffle.cpp]
 * (Q17_03_Random_Set.cpp)[code/Q17_03_Random_Set.cpp]
+* (Q17_04_Missing_Number.cpp)[code/Q17_04_Missing_Number.cpp]
+* (Q17_05_Letters_and_Numbers.cpp)[code/Q17_05_Letters_and_Numbers.cpp]
