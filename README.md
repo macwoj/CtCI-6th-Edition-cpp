@@ -14,7 +14,7 @@
 * https://github.com/careercup/CtCI-6th-Edition
 
 # Essential practice
-* Q4_00_Heap
+* [Q4_00_Heap.cpp](code/Q4_00_Heap.cpp)
 
 # Chapter 1 Arrays and Strings
 * [Q1_01_Is_Unique](code/Q1_01_Is_Unique.cpp)
@@ -30,11 +30,13 @@
 * [Q2_01_Remove_Dups](code/Q2_01_Remove_Dups.cpp)
 * [Q2_02_Return_Kth_To_Last](code/Q2_02_Return_Kth_To_Last.cpp)
 * [Q2_03_Delete_Middle_Node](code/Q2_03_Delete_Middle_Node.cpp)
+* [Q2_04_Partition.cpp](code/Q2_04_Partition.cpp)
 
 # Chapter 3 Stacks and Queues
 * [Q3_00_Queue](code/Q3_00_Queue)
 * [Q3_00_Stack](code/Q3_00_Stack.cpp)
 * [Q3_01_Three_in_One.cpp](code/Q3_01_Three_in_One.cpp)
+* [Q3_06_Animal_Shelter.cpp](code/Q3_06_Animal_Shelter.cpp)
 
 # Chapter 4 Trees and Graphs
 * [Q4_00_Traversal](code/Q4_00_Traversal.cpp)
