@@ -48,7 +48,7 @@ bool isBinarySearchTree(nodePtr node) {
                 return false;
         }
         if (node->right_) {
-            if (node->data_ > node->right_->data_)
+            if (node->data_ >= node->right_->data_)
                 return false;
             if (!isBinarySearchTree(node->right_))
                 return false;

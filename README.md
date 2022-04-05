@@ -45,26 +45,33 @@
   * https://www.geeksforgeeks.org/building-heap-from-array/
 * [Q4_01_Route_Between_Nodes](code/Q4_01_Route_Between_Nodes.cpp)
 * [Q4_02_Minimal_Tree](code/Q4_02_Minimal_Tree.cpp)
+* [Q4_03_List_of_Depths](code/Q4_03_List_of_Depths.cpp)
+* [Q4_04_Check_Balanced](code/Q4_04_Check_Balanced.cpp)
+* [Q4_05_Validate_BST](code/Q4_05_Validate_BST.cpp)
+* [Q4_09_BST_Sequences](code/Q4_09_BST_Sequences.cpp)
 
 # Chapter 5 Bit Manipulation
-* (Q5_00_BitTasks)[code/Q5_00_BitTasks.cpp]
-* (Q5_01_Insertion)[code/Q5_01_Insertion.cpp]
+* [Q5_00_BitTasks](code/Q5_00_BitTasks.cpp)
+* [Q5_01_Insertion](code/Q5_01_Insertion.cpp)
 
 # Chapter 8 Recursion and Dynamic Programming
-* (Q8_01_Triple_Step)[code/Q8_01_Triple_Step.cpp]
+* [Q8_01_Triple_Step](code/Q8_01_Triple_Step.cpp)
+* [Q8_02_Robot_in_a_Grid.cpp](code/Q8_02_Robot_in_a_Grid.cpp)
+* [Q8_03_Magic_Index](code/Q8_03_Magic_Index.cpp)
 
 # Chapter 10 Sorting and Searching
-* (Q10_00_Sort.cpp)[code/Q10_00_Sort.cpp]
-* (Q10_00_BinSearch.cpp)[code/Q10_00_BinSearch.cpp]
-* (Q10_01_Sorted_Merge.cpp)[code/Q10_01_Sorted_Merge.cpp]
-* (Q10_02_Group_Anagrams.cpp)[code/Q10_02_Group_Anagrams.cpp]
+* [Q10_00_Sort.cpp](code/Q10_00_Sort.cpp)
+* [Q10_00_BinSearch.cpp](code/Q10_00_BinSearch.cpp)
+* [Q10_01_Sorted_Merge.cpp](code/Q10_01_Sorted_Merge.cpp)
+* [Q10_02_Group_Anagrams.cpp](code/Q10_02_Group_Anagrams.cpp)
+* [Q10_03_Search_in_Rotated_Array.cpp](code/Q10_03_Search_in_Rotated_Array.cpp)
 
 # Chapter 16 Moderate
-* (Q16_01_Number_Swapper.cpp)[code/Q16_01_Number_Swapper.cpp]
+* [Q16_01_Number_Swapper.cpp](code/Q16_01_Number_Swapper.cpp)
 
 # Chapter 17 Hard
-* (Q17_01_Add_Without_Plus.cpp)[code/Q17_01_Add_Without_Plus.cpp]
-* (Q17_02_Shuffle.cpp)[code/Q17_02_Shuffle.cpp]
-* (Q17_03_Random_Set.cpp)[code/Q17_03_Random_Set.cpp]
-* (Q17_04_Missing_Number.cpp)[code/Q17_04_Missing_Number.cpp]
-* (Q17_05_Letters_and_Numbers.cpp)[code/Q17_05_Letters_and_Numbers.cpp]
+* [Q17_01_Add_Without_Plus.cpp](code/Q17_01_Add_Without_Plus.cpp)
+* [Q17_02_Shuffle.cpp](code/Q17_02_Shuffle.cpp)
+* [Q17_03_Random_Set.cpp](code/Q17_03_Random_Set.cpp)
+* [Q17_04_Missing_Number.cpp](code/Q17_04_Missing_Number.cpp)
+* [Q17_05_Letters_and_Numbers.cpp](code/Q17_05_Letters_and_Numbers.cpp)
