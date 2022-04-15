@@ -5,6 +5,7 @@
 #include <queue>
 #include <limits>
 #include <queue>
+#include <unordered_set>
 using namespace std;
 
 inline static int verbose = 0;
@@ -40,7 +41,7 @@ void clean(nodePtr node) {
 
 void print(nodePtr node,string prefix="",bool isLeft=false) {
     if (node) {
-        std::cout << prefix << (isLeft ? "├l─" : "└r─" );
+        std::cout << prefix << (isLeft ? "├──" : "└──" );
         // print the value of the node
         std::cout << node->data_;
         cout << std::endl;
@@ -81,49 +82,61 @@ nodePtr createTree(const vector<int> values) {
     return head;
 }
 
-nodePtr nextLeftNode(nodePtr node) {
-    if (!node->left_)
+nodePtr findAncestorImpl(nodePtr node,nodePtr n1,nodePtr n2) {
+    if (!node) {
+        return {};
+    }
+    if (node == n1)
+        return n1;
+    if (node == n2)
+        return n2;
+    auto left = findAncestorImpl(node->left_,n1,n2);
+    auto right = findAncestorImpl(node->right_,n1,n2);
+    bool found1 = left==n1 || right==n1;
+    bool found2 = left==n2 || right==n2;
+    if (found1 && found2)
         return node;
-    return nextLeftNode(node->left_);
+    if (left)
+        return left;
+    if (right)
+        return right;
+    return {};
 }
 
-nodePtr findLeftChildParent(nodePtr node) {
-    auto parent = node->parent_.lock();
-    if (!parent)
-        return {};
-    //if left child return parent
-    if (parent->left_ && node.get() == parent->left_.get()) {
-        return parent;
+nodePtr findAncestor(nodePtr head,nodePtr n1,nodePtr n2) {
+    cout << "Looking for " << n1->data_ << " " << n2->data_ << endl;
+    auto node = findAncestorImpl(head,n1,n2);
+    if (node && node != n1 && node != n2) {
+        cout << "Found " << node->data_ << endl;
+        return node;
     }
-    return findLeftChildParent(parent);
+    return {};
 }
 
-//left , curr, right
-nodePtr nextNode(nodePtr node) {
-    if (!node)
-        return {};
-    cout << node->data_ << " next ";
-    if (node->right_) {
-        return nextLeftNode(node->right_);
+nodePtr findAncestorParent(nodePtr n1,nodePtr n2) {
+    cout << "Looking for " << n1->data_ << " " << n2->data_ << endl;
+    unordered_set<nodePtr> path1;
+    while (n1) {
+        path1.insert(n1);
+        n1 = n1->parent_.lock();
     }
-    return findLeftChildParent(node);
+    while (n2) {
+        if (path1.find(n2)!=path1.end()) {
+            cout << "Found " << n2->data_ << endl;
+            break;
+        }
+        n2 = n2->parent_.lock();
+    }
+    return n2;
 }
 
-int main () {
+int main() {
     {
-        cout << (nextNode({})==nullptr) << endl << endl;
-    }
-    {
-        auto head = createTree({1,2,3});
-        cout << nextNode(head)->data_ << endl;
-    }
-    {
-        auto head = createTree({1,2,3});
-        cout << nextNode(head->left_)->data_ << endl;
-    }
-    {
-        auto head = createTree({1,2,3,4,5,6,7,8,9,10,11,12});
-        auto start = head->right_->left_;
-        cout << nextNode(start)->data_ << endl;
+        auto head = createTree({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17});
+        findAncestor(head,head->left_->left_->left_,head->left_->right_->left_);
+        findAncestorParent(head->left_->left_->left_,head->left_->right_->left_);
+        findAncestor(head,head->left_->left_->left_->right_,head->left_->left_->right_);
+        findAncestorParent(head->left_->left_->left_->right_,head->left_->left_->right_);
+        findAncestor(head,head->left_->left_->left_->right_,head->right_->left_->right_);
     }
 }

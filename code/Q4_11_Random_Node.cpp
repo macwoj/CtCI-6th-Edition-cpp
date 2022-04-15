@@ -5,6 +5,8 @@
 #include <queue>
 #include <limits>
 #include <queue>
+#include <unordered_set>
+#include <sstream>
 using namespace std;
 
 inline static int verbose = 0;
@@ -13,8 +15,8 @@ template<typename T>
 struct Node {
     shared_ptr<Node> left_;
     shared_ptr<Node> right_;
-    weak_ptr<Node> parent_;
     T data_;
+    int size_;
     Node(T d):data_(d) {}
 };
 
@@ -40,14 +42,24 @@ void clean(nodePtr node) {
 
 void print(nodePtr node,string prefix="",bool isLeft=false) {
     if (node) {
-        std::cout << prefix << (isLeft ? "├l─" : "└r─" );
+        std::cout << prefix << (isLeft ? "├──" : "└──" );
         // print the value of the node
-        std::cout << node->data_;
+        std::cout << node->data_ << "(" << node->size_ << ")";
         cout << std::endl;
         // enter the next tree level - left and right branch
         print(node->left_,prefix + (isLeft ? "│  " : "   "), true);
         print(node->right_, prefix + (isLeft ? "│  " : "   "),false);
     }
+}
+
+void calcSize(nodePtr node) {
+    if (!node)
+        return;
+    calcSize(node->left_);
+    calcSize(node->right_);
+    int left = (node->left_) ? node->left_->size_ : 0;
+    int right = (node->right_) ? node->right_->size_ : 0;
+    node->size_ = left + right + 1;
 }
 
 nodePtr createTree(const vector<int> values) {
@@ -67,63 +79,52 @@ nodePtr createTree(const vector<int> values) {
             auto front = currLevel.front();
             if (!front->left_) {
                 front->left_ = node;
-                node->parent_ = front;
             }
             else if(!front->right_) {
                 front->right_ = node;
-                node->parent_ = front;
                 currLevel.pop();
             }
         }
     }
     clean(head);
-    print(head);
+    calcSize(head);
     return head;
 }
 
-nodePtr nextLeftNode(nodePtr node) {
-    if (!node->left_)
+nodePtr randomNode(nodePtr node, int randNumber) {
+    int n = randNumber;
+    if (node->left_)
+        n -= node->left_->size_;
+    if (n<0)
+        return randomNode(node->left_,randNumber);
+    else if (n==0)
         return node;
-    return nextLeftNode(node->left_);
+    else
+        return randomNode(node->right_,n-1);
 }
 
-nodePtr findLeftChildParent(nodePtr node) {
-    auto parent = node->parent_.lock();
-    if (!parent)
-        return {};
-    //if left child return parent
-    if (parent->left_ && node.get() == parent->left_.get()) {
-        return parent;
-    }
-    return findLeftChildParent(parent);
+nodePtr randomNode(nodePtr node) {
+    int r = rand()%(node->size_);
+    cout << "rand=" << r << endl;
+    return randomNode(node,r);
 }
 
-//left , curr, right
-nodePtr nextNode(nodePtr node) {
-    if (!node)
-        return {};
-    cout << node->data_ << " next ";
-    if (node->right_) {
-        return nextLeftNode(node->right_);
-    }
-    return findLeftChildParent(node);
-}
-
-int main () {
+int main() {
+    srand (time(NULL));
     {
-        cout << (nextNode({})==nullptr) << endl << endl;
+        auto tree = createTree({1,2,3});
+        cout << randomNode(tree)->data_ << endl;
+        cout << randomNode(tree)->data_ << endl;
+        cout << randomNode(tree)->data_ << endl;
+        cout << randomNode(tree)->data_ << endl;
+        cout << randomNode(tree)->data_ << endl;
     }
-    {
-        auto head = createTree({1,2,3});
-        cout << nextNode(head)->data_ << endl;
-    }
-    {
-        auto head = createTree({1,2,3});
-        cout << nextNode(head->left_)->data_ << endl;
-    }
-    {
-        auto head = createTree({1,2,3,4,5,6,7,8,9,10,11,12});
-        auto start = head->right_->left_;
-        cout << nextNode(start)->data_ << endl;
-    }
+    // {
+    //     vector<int> t;
+    //     for (int i=0;i<100;i++) {
+    //         t.push_back(i);
+    //     }
+    //     auto tree = createTree(t);
+    //     print(tree);
+    // }
 }

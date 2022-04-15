@@ -48,7 +48,13 @@
 * [Q4_03_List_of_Depths](code/Q4_03_List_of_Depths.cpp)
 * [Q4_04_Check_Balanced](code/Q4_04_Check_Balanced.cpp)
 * [Q4_05_Validate_BST](code/Q4_05_Validate_BST.cpp)
+* [Q4_06_Successor](code/Q4_06_Successor.cpp)
+* [Q4_07_Build_Order](code/Q4_07_Build_Order.cpp)
+* [Q4_08_First_Common_Ancestor.cpp](code/Q4_08_First_Common_Ancestor.cpp)
 * [Q4_09_BST_Sequences](code/Q4_09_BST_Sequences.cpp)
+* [Q4_10_Check_Subtree](code/Q4_10_Check_Subtree.cpp)
+* [Q4_11_Random_Node.cpp](code/Q4_11_Random_Node.cpp)
+* [Q4_12_Paths_with_Sum](code/Q4_12_Paths_with_Sum.cpp)
 
 # Chapter 5 Bit Manipulation
 * [Q5_00_BitTasks](code/Q5_00_BitTasks.cpp)

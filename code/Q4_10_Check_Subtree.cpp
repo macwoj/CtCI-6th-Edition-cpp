@@ -5,6 +5,8 @@
 #include <queue>
 #include <limits>
 #include <queue>
+#include <unordered_set>
+#include <sstream>
 using namespace std;
 
 inline static int verbose = 0;
@@ -13,7 +15,6 @@ template<typename T>
 struct Node {
     shared_ptr<Node> left_;
     shared_ptr<Node> right_;
-    weak_ptr<Node> parent_;
     T data_;
     Node(T d):data_(d) {}
 };
@@ -40,7 +41,7 @@ void clean(nodePtr node) {
 
 void print(nodePtr node,string prefix="",bool isLeft=false) {
     if (node) {
-        std::cout << prefix << (isLeft ? "├l─" : "└r─" );
+        std::cout << prefix << (isLeft ? "├──" : "└──" );
         // print the value of the node
         std::cout << node->data_;
         cout << std::endl;
@@ -67,63 +68,46 @@ nodePtr createTree(const vector<int> values) {
             auto front = currLevel.front();
             if (!front->left_) {
                 front->left_ = node;
-                node->parent_ = front;
             }
             else if(!front->right_) {
                 front->right_ = node;
-                node->parent_ = front;
                 currLevel.pop();
             }
         }
     }
     clean(head);
-    print(head);
     return head;
 }
 
-nodePtr nextLeftNode(nodePtr node) {
-    if (!node->left_)
-        return node;
-    return nextLeftNode(node->left_);
-}
-
-nodePtr findLeftChildParent(nodePtr node) {
-    auto parent = node->parent_.lock();
-    if (!parent)
-        return {};
-    //if left child return parent
-    if (parent->left_ && node.get() == parent->left_.get()) {
-        return parent;
-    }
-    return findLeftChildParent(parent);
-}
-
-//left , curr, right
-nodePtr nextNode(nodePtr node) {
+string createTreeString(nodePtr node) {
     if (!node)
-        return {};
-    cout << node->data_ << " next ";
-    if (node->right_) {
-        return nextLeftNode(node->right_);
-    }
-    return findLeftChildParent(node);
+        return "X";
+    stringstream ss;
+    auto left = createTreeString(node->left_);
+    auto right = createTreeString(node->right_);
+    ss << node->data_ << ',' << left << ',' << right;
+    return ss.str();
 }
 
-int main () {
+
+bool checkSubtree(nodePtr tree,nodePtr subtree) {
+    auto stree = createTreeString(tree);
+    auto ssubtree = createTreeString(subtree);
+    auto res = stree.find(ssubtree);
+    return res != string::npos;
+}
+
+int main() {
     {
-        cout << (nextNode({})==nullptr) << endl << endl;
+        vector<int> t,tt;
+        for (int i=0;i<100;i++) {
+            t.push_back(i);
+            tt.push_back(1000+i);
+        }
+        auto tree = createTree(t);
+        auto sub = createTree(tt);
+        cout << checkSubtree(tree,tree->left_->left_) << endl;
+        cout << checkSubtree(tree,sub->left_->left_) << endl;
     }
-    {
-        auto head = createTree({1,2,3});
-        cout << nextNode(head)->data_ << endl;
-    }
-    {
-        auto head = createTree({1,2,3});
-        cout << nextNode(head->left_)->data_ << endl;
-    }
-    {
-        auto head = createTree({1,2,3,4,5,6,7,8,9,10,11,12});
-        auto start = head->right_->left_;
-        cout << nextNode(start)->data_ << endl;
-    }
+
 }

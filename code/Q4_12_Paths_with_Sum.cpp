@@ -5,15 +5,19 @@
 #include <queue>
 #include <limits>
 #include <queue>
+#include <unordered_map>
+#include <sstream>
 using namespace std;
 
 inline static int verbose = 0;
+
+using vecT = vector<int>;
+using mapT = unordered_map<int,int>;
 
 template<typename T>
 struct Node {
     shared_ptr<Node> left_;
     shared_ptr<Node> right_;
-    weak_ptr<Node> parent_;
     T data_;
     Node(T d):data_(d) {}
 };
@@ -40,7 +44,7 @@ void clean(nodePtr node) {
 
 void print(nodePtr node,string prefix="",bool isLeft=false) {
     if (node) {
-        std::cout << prefix << (isLeft ? "├l─" : "└r─" );
+        std::cout << prefix << (isLeft ? "├──" : "└──" );
         // print the value of the node
         std::cout << node->data_;
         cout << std::endl;
@@ -67,63 +71,74 @@ nodePtr createTree(const vector<int> values) {
             auto front = currLevel.front();
             if (!front->left_) {
                 front->left_ = node;
-                node->parent_ = front;
             }
             else if(!front->right_) {
                 front->right_ = node;
-                node->parent_ = front;
                 currLevel.pop();
             }
         }
     }
-    clean(head);
-    print(head);
+    //clean(head);
     return head;
 }
 
-nodePtr nextLeftNode(nodePtr node) {
-    if (!node->left_)
-        return node;
-    return nextLeftNode(node->left_);
-}
-
-nodePtr findLeftChildParent(nodePtr node) {
-    auto parent = node->parent_.lock();
-    if (!parent)
-        return {};
-    //if left child return parent
-    if (parent->left_ && node.get() == parent->left_.get()) {
-        return parent;
-    }
-    return findLeftChildParent(parent);
-}
-
-//left , curr, right
-nodePtr nextNode(nodePtr node) {
+vecT pathSum(nodePtr node,mapT& sums) {
     if (!node)
         return {};
-    cout << node->data_ << " next ";
-    if (node->right_) {
-        return nextLeftNode(node->right_);
-    }
-    return findLeftChildParent(node);
+    auto left = pathSum(node->left_,sums);
+    auto right = pathSum(node->right_,sums);
+    for (auto& i:left)
+        i+=node->data_;
+    for (auto& i:right)
+        i+=node->data_;
+    left.insert(left.end(),right.begin(),right.end());
+    left.push_back(node->data_);
+    for (auto i:left)
+        sums[i]++;
+    return left;
 }
 
-int main () {
+int pathSum(nodePtr node,int target) {
+    mapT sums;
+    auto _ = pathSum(node,sums);
+    return sums[target];
+}
+
+int pathSum2(nodePtr node,int target, int runningSum, mapT& count) {
+    if (!node)
+        return 0;
+    runningSum += node->data_;
+    int sum = runningSum - target;
+    auto total = count[sum];
+    if (runningSum == target)
+        total++;
+    count[runningSum]++;
+    total += pathSum2(node->left_,target,runningSum,count);
+    total += pathSum2(node->right_,target,runningSum,count);
+    count[runningSum]--;
+    return total;
+}
+
+int pathSum2(nodePtr node, int target) {
+    mapT count;
+    return pathSum2(node,target,0,count);
+}
+
+int main() {
     {
-        cout << (nextNode({})==nullptr) << endl << endl;
+        srand(1121212);
+        vector<int> tmp;
+        for (int i=0;i<1000;i++) {
+            tmp.push_back((rand()%21)-10);
+        }
+        auto node = createTree(tmp);
+        //print(node);
+        cout << pathSum(node,18) << " " << pathSum2(node,18) << endl << endl;
     }
     {
-        auto head = createTree({1,2,3});
-        cout << nextNode(head)->data_ << endl;
+        auto node = createTree({1,2,3,4,2});
+        print(node);
+        cout << pathSum(node,4) << " " << pathSum2(node,4) << endl;
     }
-    {
-        auto head = createTree({1,2,3});
-        cout << nextNode(head->left_)->data_ << endl;
-    }
-    {
-        auto head = createTree({1,2,3,4,5,6,7,8,9,10,11,12});
-        auto start = head->right_->left_;
-        cout << nextNode(start)->data_ << endl;
-    }
+
 }
