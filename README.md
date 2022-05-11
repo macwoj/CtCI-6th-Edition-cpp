@@ -25,17 +25,28 @@
     * https://www.cplusplus.com/reference/cctype/tolower/
 * [Q1_05_One_Away.cpp](code/Q1_05_One_Away.cpp)
 * [Q1_06_String_Compression.cpp](code/Q1_06_String_Compression.cpp)
+* [Q1_07_Rotate_Matrix.cpp](code/Q1_07_Rotate_Matrix.cppcode/Q1_07_Rotate_Matrix.cpp)
+* [Q1_08_Zero_Matrix.cpp](code/Q1_08_Zero_Matrix.cpp)
+* [Q1_09_String_Rotation.cpp](code/Q1_09_String_Rotation.cpp)
 
 # Chapter 2 Linked Lists
 * [Q2_01_Remove_Dups](code/Q2_01_Remove_Dups.cpp)
 * [Q2_02_Return_Kth_To_Last](code/Q2_02_Return_Kth_To_Last.cpp)
 * [Q2_03_Delete_Middle_Node](code/Q2_03_Delete_Middle_Node.cpp)
 * [Q2_04_Partition.cpp](code/Q2_04_Partition.cpp)
+* [Q2_05_Sum_Lists.cpp](code/Q2_05_Sum_Lists.cpp)
+* [Q2_06_Palindrome.cpp](code/Q2_06_Palindrome.cpp)
+* [Q2_07_Intersection.cpp](code/Q2_07_Intersection.cpp)
+* [Q2_08_Loop_Detection.cpp](code/Q2_08_Loop_Detection.cpp)
 
 # Chapter 3 Stacks and Queues
 * [Q3_00_Queue](code/Q3_00_Queue)
 * [Q3_00_Stack](code/Q3_00_Stack.cpp)
 * [Q3_01_Three_in_One.cpp](code/Q3_01_Three_in_One.cpp)
+* [Q3_02_Stack_Min.cpp](code/Q3_02_Stack_Min.cpp)
+* [Q3_03_Stack_of_Plates.cpp](code/Q3_03_Stack_of_Plates.cpp)
+* [Q3_04_Queue_via_Stacks.cpp](code/Q3_04_Queue_via_Stacks.cpp)
+* [Q3_05_Sort_Stack.cpp](code/Q3_05_Sort_Stack.cpp)
 * [Q3_06_Animal_Shelter.cpp](code/Q3_06_Animal_Shelter.cpp)
 
 # Chapter 4 Trees and Graphs
@@ -71,9 +82,15 @@
 * [Q10_01_Sorted_Merge.cpp](code/Q10_01_Sorted_Merge.cpp)
 * [Q10_02_Group_Anagrams.cpp](code/Q10_02_Group_Anagrams.cpp)
 * [Q10_03_Search_in_Rotated_Array.cpp](code/Q10_03_Search_in_Rotated_Array.cpp)
+* [Q10_04_Sorted_Search_No_Size.cpp](code/Q10_04_Sorted_Search_No_Size.cpp)
+* [Q10_05_Sparse_Search.cpp](code/Q10_05_Sparse_Search.cpp)
+* [Q10_06_External_Sort.cpp](code/Q10_06_External_Sort.cpp)
+* [Q10_07_Missing_Int.cpp](code/Q10_07_Missing_Int.cpp)
 
 # Chapter 16 Moderate
 * [Q16_01_Number_Swapper.cpp](code/Q16_01_Number_Swapper.cpp)
+* [Q16_02_Word_Frequencies.cpp](code/Q16_02_Word_Frequencies.cpp)
+* [Q16_03_Intersection.cpp](code/Q16_03_Intersection.cpp)
 
 # Chapter 17 Hard
 * [Q17_01_Add_Without_Plus.cpp](code/Q17_01_Add_Without_Plus.cpp)
